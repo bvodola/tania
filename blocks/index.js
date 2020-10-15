@@ -9,6 +9,7 @@ import Form from "./Form";
 import Field from "./Field";
 import Button from "./Button";
 import Features from "./Features";
+import Modal from "./Modal";
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   Form,
   Field,
   Features,
+  Modal,
 };

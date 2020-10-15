@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { PageContext } from "utils";
 
 const StyledButton = styled.button`
   padding: 16px;
@@ -34,7 +35,21 @@ const StyledButton = styled.button`
 `;
 
 const Button = (props) => {
-  return <StyledButton {...props}>{props.text}</StyledButton>;
+  const pageState = React.useContext(PageContext);
+  const onClick = () => {
+    if (typeof props.onClick === "string") {
+      if (props.onClick.startsWith("openModal:")) {
+        const modalId = props.onClick.replace("openModal:", "");
+        pageState.set(modalId, true);
+      }
+    }
+  };
+
+  return (
+    <StyledButton {...props} onClick={onClick}>
+      {props.text}
+    </StyledButton>
+  );
 };
 
 export default Button;

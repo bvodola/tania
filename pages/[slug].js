@@ -1,6 +1,7 @@
 import React from "react";
 import { Section } from "blocks/index";
 import { createGlobalStyle } from "styled-components";
+import { dashToPascal, PageContext } from "utils";
 
 const GlobalStyle = createGlobalStyle`
   ${(props) => `
@@ -11,23 +12,41 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default function Home(props) {
+  const pageId = dashToPascal(props.slug);
   const [pageData, setPageData] = React.useState(null);
+  const [pageState, setPageStateObject] = React.useState({});
+  const setPageState = (k, v) => {
+    setPageStateObject({
+      ...pageState,
+      [k]: v,
+    });
+  };
 
+  // Fetch Page Data from file
   const fetchData = async () => {
     const _pageData = (await import(`../data/${props.slug}`)).default;
     setPageData(_pageData);
   };
 
+  // Trigger Page Data Fetching
   React.useEffect(() => {
     fetchData();
   }, []);
 
+  // Returns null if pageData is not ready
   if (pageData === null) return null;
 
+  console.log("pageState", pageState);
   return (
-    <>
-      <GlobalStyle id={props.slug} style={pageData.css} />
-      <div id={props.slug}>
+    <PageContext.Provider
+      value={{
+        ...pageState,
+        set: setPageState,
+      }}
+    >
+      <GlobalStyle id={pageId} style={pageData.css} />
+      <div id={pageId}>
+        {/* Navbar */}
         <nav
           style={{
             position: "fixed",
@@ -43,11 +62,13 @@ export default function Home(props) {
           ))}
         </nav>
         <div style={{ height: "70px", width: "100%" }} />
+
+        {/* Blocks */}
         {pageData.children.map((section) => (
           <Section {...section} />
         ))}
       </div>
-    </>
+    </PageContext.Provider>
   );
 }
 

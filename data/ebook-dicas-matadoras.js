@@ -1,5 +1,11 @@
+import * as utils from "utils";
+
 const page = {
   css: `
+    h1 {
+      color: #125089;
+      font-weight: bold;
+    }
   `,
   // Logo
   logo: {
@@ -29,6 +35,9 @@ const page = {
         background-size: cover;
         background-position: center;    
         background-attachment: fixed;
+        @media(max-width:900px) {
+          padding-top: 30px;
+        }
       `,
       variant: "container",
       children: [
@@ -51,6 +60,7 @@ const page = {
               variant: "darkRed",
               text: "Baixa Livro Grátis",
               css: `font-weight: 500;`,
+              onClick: "openModal:ctaFormModal",
             },
           ],
         },
@@ -73,6 +83,12 @@ const page = {
           ],
         },
       ],
+    },
+
+    {
+      _block: "modal",
+      id: "ctaFormModal",
+      children: [utils.emailForm("Baixar livro grátis")],
     },
   ],
 };

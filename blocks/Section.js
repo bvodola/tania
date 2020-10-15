@@ -10,6 +10,7 @@ import {
   Form,
   Field,
   Features,
+  Modal,
 } from "blocks/index";
 
 const Section = (props) => {
@@ -54,6 +55,10 @@ const Section = (props) => {
     }
     case "features": {
       SectionBlock = Features;
+      break;
+    }
+    case "modal": {
+      SectionBlock = Modal;
       break;
     }
   }
