@@ -1,4 +1,10 @@
 const page = {
+  css: `
+    h1 {
+      color: #125089;
+      font-weight: bold;
+    }
+  `,
   // Logo
   logo: {
     children: [

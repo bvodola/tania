@@ -1,12 +1,13 @@
 import React from "react";
-import page from "data/indeniza-mais";
 import { Section } from "blocks/index";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  h1 {
-    color: #125089;
-  }
+  ${(props) => `
+    #${props.id} {
+      ${props.style}
+    }
+  `}
 `;
 
 export default function Home(props) {
@@ -23,12 +24,10 @@ export default function Home(props) {
 
   if (pageData === null) return null;
 
-  console.log(pageData);
-
   return (
     <>
-      <GlobalStyle />
-      <div>
+      <GlobalStyle id={props.slug} style={pageData.css} />
+      <div id={props.slug}>
         <nav
           style={{
             position: "fixed",
