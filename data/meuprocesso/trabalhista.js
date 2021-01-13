@@ -370,6 +370,7 @@ const page = {
                 }
               `,
           title: "Solicite uma ligação de nossos advogados",
+          redir: "/meuprocesso.trabalhista-obrigado",
           submit_button: {
             children: (
               <>

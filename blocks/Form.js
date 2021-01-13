@@ -41,6 +41,9 @@ const Form = ({ children, ...props }) => {
     });
     pageState.clear();
     pageState.set("isButtonLoading", false);
+    if (props.redir) {
+      location.href = props.redir;
+    }
   };
 
   const formChildren = addFormIdToChildFields(props.id, children);

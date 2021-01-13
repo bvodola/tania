@@ -63,9 +63,6 @@ const page = {
           `,
           content: (
             <>
-              <h1 className="text-4xl text-center mb-10">
-                ADVOGADOS TRABALHISTAS EM SP
-              </h1>
               <h1 className="text-3xl text-center mb-10 text-blue-300">
                 Muito obrigado pelo contato!
               </h1>
@@ -98,8 +95,7 @@ const page = {
                   font-size: 20px;
                 }
               `,
-              title:
-                "Se quiser, você pode também falar conosco agora por WhatsApp",
+              title: "Se quiser, você pode falar conosco por WhatsApp",
               children: [
                 {
                   _block: "button",
