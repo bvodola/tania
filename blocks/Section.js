@@ -11,6 +11,7 @@ import {
   Field,
   Features,
   Modal,
+  HeroAngled,
 } from "blocks/index";
 
 const Section = (props) => {
@@ -59,6 +60,11 @@ const Section = (props) => {
     }
     case "modal": {
       SectionBlock = Modal;
+      break;
+    }
+
+    case "hero-angled": {
+      SectionBlock = HeroAngled;
       break;
     }
   }

@@ -30,6 +30,7 @@ const CloseButton = styled.div`
   top: 40px;
   right: 40px;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const Modal = (props) => {

@@ -12,7 +12,7 @@ export const StyledCol = styled.div`
 `;
 
 const Col = (props) => (
-  <StyledCol {...props} className="col">
+  <StyledCol {...props} className={`col ${props.className}`}>
     {props.children.map((section) => (
       <Section {...section} />
     ))}

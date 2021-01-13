@@ -39,7 +39,6 @@ const page = {
           padding-top: 30px;
         }
       `,
-      variant: "container",
       children: [
         {
           _block: "col",
@@ -88,7 +87,7 @@ const page = {
     {
       _block: "modal",
       id: "ctaFormModal",
-      children: [utils.emailForm("Baixar livro grátis")],
+      children: [utils.emailForm("ctaForm", "Baixar livro grátis")],
     },
   ],
 };

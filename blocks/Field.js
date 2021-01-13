@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { PageContext } from "utils";
 
 const Input = styled.input`
   ${(props) => props.fullWidth && "width: 100%;"}
@@ -11,19 +12,31 @@ const Input = styled.input`
 
 const Field = (props) => {
   let FieldComponent;
+  const pageState = React.useContext(PageContext);
+
+  const handleChange = (ev) => {
+    const val = ev.target.value;
+    pageState.set(props.name, val);
+  };
 
   switch (props.widget) {
-    case "text": {
+    case "textarea": {
       FieldComponent = Input;
       break;
     }
-    case "textarea": {
+    default: {
       FieldComponent = Input;
       break;
     }
   }
 
-  return <FieldComponent {...props} />;
+  return (
+    <FieldComponent
+      {...props}
+      value={pageState.values[props.name] ?? ""}
+      onChange={handleChange}
+    />
+  );
 };
 
 export default Field;

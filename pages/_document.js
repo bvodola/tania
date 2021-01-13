@@ -36,6 +36,19 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap"
             rel="stylesheet"
           ></link>
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
+          <link
+            href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+            rel="stylesheet"
+          ></link>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css"
+          ></link>
+          <script
+            src="https://kit.fontawesome.com/15bd0251ae.js"
+            crossorigin="anonymous"
+          ></script>
         </Head>
         <body>
           <Main />

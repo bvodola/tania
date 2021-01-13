@@ -1,6 +1,10 @@
 import React from "react";
-import { Section } from "blocks/index";
+import { Button, Section } from "blocks/index";
 import styled from "styled-components";
+import { PageContext, addFormIdToChildFields } from "utils";
+import FaunaSauce from "fauna-sauce";
+
+const fauna = new FaunaSauce("fnAD4LGT9eACBl0J2hNXFrh3dgkdF7bO_snH7hKD");
 
 const StyledForm = styled.form`
   ${(props) =>
@@ -11,7 +15,7 @@ const StyledForm = styled.form`
     border-radius: 6px;
     padding: 10px;
 
-    .panel-title {
+    .title {
       font-size: 14px;
       margin-bottom: 1em;
       background: #125089;
@@ -26,28 +30,28 @@ const StyledForm = styled.form`
   ${(props) => props.css}
 `;
 
-const Button = styled.button`
-  cursor: pointer;
-  padding: 10px 16px;
-  margin-top: 10px;
-  background-color: #ec9314;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  border: 0;
-  border-radius: 4px;
-  ${(props) => props.fullWidth && "width: 100%;"}
-  ${(props) => props.css}
-`;
-
 const Form = ({ children, ...props }) => {
+  const pageState = React.useContext(PageContext);
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    pageState.set("isButtonLoading", true);
+    await fauna.create("form_entries", {
+      ...pageState.values,
+      created_at: Date.now(),
+    });
+    pageState.clear();
+    pageState.set("isButtonLoading", false);
+  };
+
+  const formChildren = addFormIdToChildFields(props.id, children);
+
   return (
-    <StyledForm {...props}>
-      <div className="panel-title">{props.title}</div>
-      {children.map((section) => (
-        <Section {...section} />
+    <StyledForm {...props} onSubmit={handleSubmit}>
+      <div className="title">{props.title}</div>
+      {formChildren.map((block) => (
+        <Section {...block} />
       ))}
-      <Button {...props.submit_button} />
+      {props.submit_button && <Button {...props.submit_button} type="submit" />}
     </StyledForm>
   );
 };

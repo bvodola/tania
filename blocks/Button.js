@@ -10,10 +10,28 @@ const StyledButton = styled.button`
   margin-top: 10px;
   align-self: baseline;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   ${(props) =>
     props.variant === "primary" &&
     `
       background-color: #125089;
+      color: #fff;
+  `}
+
+  ${(props) =>
+    props.variant === "green" &&
+    `
+      background-color: #4caf50;
+      color: #fff;
+  `}
+
+  ${(props) =>
+    props.variant === "blue" &&
+    `
+      background-color: #03a9f4;
       color: #fff;
   `}
 
@@ -31,23 +49,44 @@ const StyledButton = styled.button`
       color: #fff;
   `}
 
+  ${(props) =>
+    props.disabled &&
+    `
+      opacity: 0.5;
+  `}
+
   ${(props) => props.css}
 `;
 
 const Button = (props) => {
   const pageState = React.useContext(PageContext);
-  const onClick = () => {
+  const onClick = (ev) => {
     if (typeof props.onClick === "string") {
       if (props.onClick.startsWith("openModal:")) {
         const modalId = props.onClick.replace("openModal:", "");
         pageState.set(modalId, true);
+        return;
+      }
+
+      if (props.onClick.startsWith("whatsapp:")) {
+        const phone = props.onClick.split("whatsapp:")[1];
+        location.href = `http://wa.me/${phone}`;
+        return;
       }
     }
+
+    props.onClick(ev);
   };
 
   return (
-    <StyledButton {...props} onClick={onClick}>
-      {props.text}
+    <StyledButton
+      {...props}
+      onClick={props.onClick && onClick}
+      disabled={pageState.values.isButtonLoading}
+    >
+      {pageState.values.isButtonLoading
+        ? "Carregando..."
+        : props.text || props.children}
     </StyledButton>
   );
 };

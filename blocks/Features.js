@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { StyledCol } from "blocks/Col";
+import { Row, Col } from "blocks/index";
 
-const StyledFeature = styled(StyledCol)`
+const StyledFeature = styled(Col)`
   ${(props) => props.css}
   width: ${(props) => `${100 / props.numberOfFeatures}%`};
   text-align: center;
@@ -14,15 +15,19 @@ const StyledFeature = styled(StyledCol)`
 
 const Features = ({ features, ...props }) => {
   return (
-    <>
+    <Row>
       {features.map((feature) => (
-        <StyledFeature {...props} numberOfFeatures={features.length}>
-          <img src={feature.img} alt="" />
+        <StyledFeature
+          {...props}
+          className={`col ${props.className}`}
+          numberOfFeatures={features.length}
+        >
+          {feature.img && <img src={feature.img} alt="" />}
           <p className="title">{feature.title}</p>
           <p className="description">{feature.description}</p>
         </StyledFeature>
       ))}
-    </>
+    </Row>
   );
 };
 
