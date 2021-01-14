@@ -1,4 +1,4 @@
-import { ON_CLICK_WHATSAPP, WHATSAPP_NUMBER } from "./_constants";
+import { ON_CLICK_WHATSAPP, PHONE_NUMBER } from "./_constants";
 
 const page = {
   css: ``,
@@ -416,7 +416,7 @@ const page = {
             <h1 className="text-2xl mb-5 text-primary">
               Telefone e Endereços
             </h1>,
-            <p>{WHATSAPP_NUMBER}</p>,
+            <p>{PHONE_NUMBER}</p>,
             <p>Rua Jaboatão, 50 - Casa Verde - São Paulo/SP</p>,
             <p>Av. Washington Luis, 6817 - Jd. Aeroporto - São Paulo/SP</p>,
           ],
