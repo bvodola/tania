@@ -1,4 +1,4 @@
-import { Features } from "blocks";
+import { ON_CLICK_WHATSAPP } from "./_constants";
 
 const page = {
   css: ``,
@@ -99,8 +99,7 @@ const page = {
               children: [
                 {
                   _block: "button",
-                  onClick:
-                    "whatsapp:5511994695279?text=Oi, tudo bem? Gostaria de falar com um advogado trabalhista, por favor. Obrigado!",
+                  onClick: ON_CLICK_WHATSAPP,
                   variant: "green",
                   text: (
                     <>

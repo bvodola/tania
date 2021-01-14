@@ -1,4 +1,4 @@
-import { Features } from "blocks";
+import { ON_CLICK_WHATSAPP, WHATSAPP_NUMBER } from "./_constants";
 
 const page = {
   css: ``,
@@ -107,8 +107,7 @@ const page = {
               children: [
                 {
                   _block: "button",
-                  onClick:
-                    "whatsapp:5511994695279?text=Oi, tudo bem? Gostaria de falar com um advogado trabalhista, por favor. Obrigado!",
+                  onClick: ON_CLICK_WHATSAPP,
                   variant: "green",
                   text: (
                     <>
@@ -417,7 +416,7 @@ const page = {
             <h1 className="text-2xl mb-5 text-primary">
               Telefone e Endereços
             </h1>,
-            <p>(11) 99469-5279 </p>,
+            <p>{WHATSAPP_NUMBER}</p>,
             <p>Rua Jaboatão, 50 - Casa Verde - São Paulo/SP</p>,
             <p>Av. Washington Luis, 6817 - Jd. Aeroporto - São Paulo/SP</p>,
           ],
