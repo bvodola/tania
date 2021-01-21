@@ -11,6 +11,7 @@ import Button from "./Button";
 import Features from "./Features";
 import Modal from "./Modal";
 import HeroAngled from "./HeroAngled";
+import Redir from "./Redir";
 
 export {
   Button,
@@ -25,5 +26,6 @@ export {
   Field,
   Features,
   Modal,
+  Redir,
   HeroAngled,
 };

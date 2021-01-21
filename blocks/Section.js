@@ -12,6 +12,7 @@ import {
   Features,
   Modal,
   HeroAngled,
+  Redir,
 } from "blocks/index";
 
 const Section = (props) => {
@@ -65,6 +66,11 @@ const Section = (props) => {
 
     case "hero-angled": {
       SectionBlock = HeroAngled;
+      break;
+    }
+
+    case "redir": {
+      SectionBlock = Redir;
       break;
     }
   }
