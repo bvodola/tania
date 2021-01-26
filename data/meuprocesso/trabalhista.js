@@ -107,6 +107,7 @@ const page = {
               children: [
                 {
                   _block: "button",
+                  id: "WhatsappButton",
                   onClick: ON_CLICK_WHATSAPP,
                   variant: "green",
                   text: (
